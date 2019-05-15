@@ -1,0 +1,29 @@
+{
+  "name": "enginx",
+  "version": "0.0.1",
+  "description": "",
+  "main": "node/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "init": "pm2 start ecosystem.config.js ; echo 'started'",
+    "start": "pm2 start ecosystem.config.js && pm2 log enginx",
+    "dev": "npm run start",
+    "build": "docker build ./ -t enginx",
+    "createvolume": "docker run --rm -it -v enginx:/things -v $enginx:/output alpine cp -a /output /things",
+    "run": "docker build ./ -f script.Dockerfile -t enginxjs ; docker rm --force enginxjs ; docker run -it -v things:/program/output --name enginxjs enginxjs node node/index.js",
+    "enginx": "docker build ./ -f enginx.Dockerfile -t enginx ; docker rm --force enginx ; docker run -d -v things:/program/output --name enginx enginx",
+    "debug": "node node/index.js --debug ; docker exec -it enginxdebug /bin/bash",
+    "debug2": "node --nolazy --inspect-brk=1234 node/index.js",
+    "stop": "pm2 stop alopu-api",
+    "commit": "git add . ; git commit -m 'did I do that?'",
+    "push": "npm run commit ; git push origin dev",
+    "pull": "git pull origin dev"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "minimist": "^1.2.0",
+    "rimraf": "^2.6.3",
+    "shelljs": "^0.8.3"
+  }
+}
