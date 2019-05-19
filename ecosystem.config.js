@@ -2,7 +2,7 @@ module.exports = {
   apps : [{
     name: 'enginx',
 		script: 'node/index.js',
-		// args: ['--certbot'],
+		args: ['--nobuild', '--nocertbot'],
     instances: 1,
     watch: true,
 		ignore_watch: ['./output'],
