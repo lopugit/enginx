@@ -1,6 +1,6 @@
 {
   "name": "enginx",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "node/index.js",
   "scripts": {
