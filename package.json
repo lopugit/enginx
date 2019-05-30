@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "init": "pm2 start ecosystem.config.js ; echo 'started'",
     "start": "pm2 start ecosystem.config.js && pm2 log enginx",
-    "dev": "npm run start",
+    "dev": "node node/index.js --nosync --notall --generateConfigs --dev",
     "build": "docker build ./ -t enginx",
     "createvolume": "docker run --rm -it -v enginx:/things -v $enginx:/output alpine cp -a /output /things",
     "run": "docker build ./ -f script.Dockerfile -t enginxjs ; docker rm --force enginxjs ; docker run -it -v things:/program/output --name enginxjs enginxjs node node/index.js",
